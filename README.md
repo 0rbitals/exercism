@@ -1,1 +1,1 @@
-# Exercism Problem Sets
+# Exercism Javascript Problem Sets
