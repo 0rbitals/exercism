@@ -1,49 +1,57 @@
 export const abilityModifier = (num) => {
-  throw new Error('Remove this statement and implement this function');
+  if(num < 3){
+    throw 'Ability scores must be at least 3';
+  } else if (num > 18){
+    throw 'Ability scores can be at most 18';
+  }
+  return Math.floor((num - 10) / 2);
 };
 
 export class Character {
+
   static rollAbility() {
     let rolls = [];
     for(let i = 0; i < 4; i++){
-      rolls.push(Math.ceil(Math.random() * 7));
+      rolls.push(Math.ceil(Math.random() * 6));
     }
-    return rolls;
+    return rolls.reduce((acc, next) => acc + next, -Math.min(...rolls)); // the initial value is a way to substract the miniumum roll
+  }
+
+  constructor(){
+    this.str = Character.rollAbility();
+    this.dex = Character.rollAbility();
+    this.con = Character.rollAbility();
+    this.int = Character.rollAbility();
+    this.wis = Character.rollAbility();
+    this.char = Character.rollAbility();
   }
 
   get strength() {
-    const rolls = Character.rollAbility();
-    return rolls.reduce((acc, next) => acc + next, -Math.min(...rolls));  // the initial value is a way to substract the miniumum roll
+    return this.str;
   }
 
   get dexterity() {
-    const rolls = Character.rollAbility();
-    return rolls.reduce((acc, next) => acc + next, -Math.min(...rolls));
+    return this.dex;
   }
 
   get constitution() {
-    const rolls = Character.rollAbility();
-    return rolls.reduce((acc, next) => acc + next, -Math.min(...rolls));
+    return this.con;
   }
 
   get intelligence() {
-    const rolls = Character.rollAbility();
-    return rolls.reduce((acc, next) => acc + next, -Math.min(...rolls));
+    return this.int;
   }
 
   get wisdom() {
-    const rolls = Character.rollAbility();
-    return rolls.reduce((acc, next) => acc + next, -Math.min(...rolls));
+    return this.wis;
   }
 
   get charisma() {
-    const rolls = Character.rollAbility();
-    return rolls.reduce((acc, next) => acc + next, -Math.min(...rolls));
+    return this.char;
   }
 
   get hitpoints() {
-    const modifier = Math.floor((this.constitution - 10) / 2);
-    return 10 + modifier;
+    return 10 + abilityModifier(this.constitution);
   }
 }
 
