@@ -1,5 +1,9 @@
+const GIGASECONDS_IN_MILLISECONDS = 10 ** 12;
 export const gigasecond = (gs) => {
-  let gigasecondsInMilliseconds = 10 ** 12;
-  gs.setMilliseconds(gigasecondsInMilliseconds);
-  return gs;
+  return determineFuture(gs);
 };
+
+function determineFuture(gs) {
+  gs.setMilliseconds(GIGASECONDS_IN_MILLISECONDS);
+  return gs;
+}
