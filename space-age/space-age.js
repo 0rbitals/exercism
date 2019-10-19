@@ -3,7 +3,7 @@ export const age = (planet, ageInSeconds) => {
   const orbitalPeriods = {
     mercury: 0.2408467,
     venus: 0.61519726,
-    earth: earthYear,
+    earth: 1,
     mars: 1.8808158,
     jupiter: 11.862615,
     saturn: 29.447498,
@@ -12,5 +12,5 @@ export const age = (planet, ageInSeconds) => {
   };
   const ageInPlanet = (ageInSeconds / (orbitalPeriods[planet] * earthYear)).toFixed(2);
 
-  return orbitalPeriods[planet] === earthYear ? Number((ageInSeconds / earthYear).toFixed(2)) : Number(ageInPlanet);
+  return Number(ageInPlanet);
 };
