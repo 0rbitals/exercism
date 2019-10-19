@@ -1,26 +1,25 @@
-//
-// This is only a SKELETON file for the 'Clock' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export class Clock {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  constructor(hours, minutes='0') {
+    this.time = new Date();
+    this.time.setHours(hours);
+    this.time.setMinutes(minutes);
   }
 
   toString() {
-    throw new Error('Remove this statement and implement this function');
+    return this.time.toString().slice(16,21);
   }
 
-  plus() {
-    throw new Error('Remove this statement and implement this function');
+  plus(minutes) {
+    this.time.setTime(this.time.getTime() + (minutes * 60 * 1000));
+    return this;
   }
 
-  minus() {
-    throw new Error('Remove this statement and implement this function');
+  minus(minutes) {
+    this.time.setTime(this.time.getTime() - (minutes * 60 * 1000));
+    return this;
   }
 
-  equals() {
-    throw new Error('Remove this statement and implement this function');
+  equals(otherTime) {
+    return this.toString() === otherTime.toString();
   }
 }
