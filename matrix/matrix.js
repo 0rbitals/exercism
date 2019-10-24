@@ -16,25 +16,39 @@ export class Matrix {
     return this.rows[0].length;
   }
 
-  get rows() {
+
+  constructRows(matrix) {
     const rows = [];
-    let arr = this.matrix.split('\n');
+    let arr = matrix.split('\n');
     for (let i = 0; i < arr.length; i++) {
       rows.push(arr[i].split(' '));
     }
     return this.convert(rows);
   }
 
-  get columns() {
+  get rows() {
+    return this.constructRows(this.matrix);
+  }
+
+  constructColumns(rows) {
     const columns = [];
     let temp = [];
     for (let i = 0; i < this.numberOfColumns(); i++) {
-      for (let j = 0; j < this.rows.length; j++) {
-        temp.push(this.rows[j][i]);
+      for (let j = 0; j < rows.length; j++) {
+        temp.push(rows[j][i]);
       }
       columns.push(temp);
       temp = [];
     }
     return columns;
   }
+
+  get columns() {
+    return this.constructColumns(this.rows);
+  }
+    
 }
+
+const test = new Matrix('1');
+console.log(test.rows);
+console.log(test.columns);
