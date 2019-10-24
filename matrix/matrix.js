@@ -1,29 +1,10 @@
 export class Matrix {
   constructor(matrix) {
-    this.matrix = matrix;
+    this.matrix = matrix.split('\n');
   }
-  
-  // Converts all elements in rows from strings to numbers
-  convert(arr) {
-    return arr.map((subarr) => {
-      return subarr.map((str) => Number(str));
-    });
-  }
-
-  // Get number of digits in the first row 
-  // (I'm assuming all rows have the same number of digits)
-  numberOfColumns() {
-    return this.rows[0].length;
-  }
-
 
   constructRows(matrix) {
-    const rows = [];
-    let arr = matrix.split('\n');
-    for (let i = 0; i < arr.length; i++) {
-      rows.push(arr[i].split(' '));
-    }
-    return this.convert(rows);
+    return matrix.map((el, index, arr) => arr[index].split(' ').map((el) => Number(el)));
   }
 
   get rows() {
@@ -31,16 +12,7 @@ export class Matrix {
   }
 
   constructColumns(rows) {
-    const columns = [];
-    let temp = [];
-    for (let i = 0; i < this.numberOfColumns(); i++) {
-      for (let j = 0; j < rows.length; j++) {
-        temp.push(rows[j][i]);
-      }
-      columns.push(temp);
-      temp = [];
-    }
-    return columns;
+    return rows[0].map((v, i) => rows.map(row => row[i]));
   }
 
   get columns() {
@@ -49,6 +21,6 @@ export class Matrix {
     
 }
 
-const test = new Matrix('1');
+const test = new Matrix('1 2 3 4\n5 6 7 8\n9 8 7 6');
 console.log(test.rows);
 console.log(test.columns);
