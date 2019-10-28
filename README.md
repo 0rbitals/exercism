@@ -1,5 +1,8 @@
 # Exercism.io Javascript Problem Sets
 
+## Core Track
+===============
+
 * Two Fer
 * Resistor Color
 * Resistor Color Duo
@@ -9,3 +12,14 @@
 * Pangram
 * Matrix
 * Bob
+
+## Extra Exercises
+================
+
+* Protein Translation
+* Roman Numerals
+* D&D Character
+* Leap
+* Reverse String
+* Meetup
+* Clock
