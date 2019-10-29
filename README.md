@@ -12,6 +12,7 @@
 * Pangram
 * Matrix
 * Bob
+* Pascal's Triangle
 
 ## Extra Exercises
 ================
