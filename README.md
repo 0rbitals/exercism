@@ -24,3 +24,4 @@
 * Reverse String
 * Meetup
 * Clock
+* Collatz' Conjecture
