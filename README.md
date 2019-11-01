@@ -25,3 +25,4 @@
 * Meetup
 * Clock
 * Collatz' Conjecture
+* Triangle
