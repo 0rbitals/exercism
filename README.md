@@ -13,6 +13,7 @@
 * Matrix
 * Bob
 * Pascal's Triangle
+* Linked List (Work In Progress)
 
 ## Extra Exercises
 ================
