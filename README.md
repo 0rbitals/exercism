@@ -13,7 +13,7 @@
 * Matrix
 * Bob
 * Pascal's Triangle
-* Linked List (Work In Progress)
+* Linked List
 
 ## Extra Exercises
 ================
@@ -27,3 +27,4 @@
 * Clock
 * Collatz' Conjecture
 * Triangle
+* ETL
