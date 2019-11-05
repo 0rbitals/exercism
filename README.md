@@ -14,6 +14,7 @@
 * Bob
 * Pascal's Triangle
 * Linked List
+* Grade School
 
 ## Extra Exercises
 ================
