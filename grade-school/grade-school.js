@@ -7,7 +7,7 @@ export class GradeSchool {
     Object.keys(this.db).sort().forEach((key) => {
       this.db[key].sort();
     });
-    return this.db;
+    return JSON.parse(JSON.stringify(this.db));
   }
 
   add(name, grade) {
@@ -20,6 +20,6 @@ export class GradeSchool {
 
   grade(grade) {
     if(!this.db[grade]) return [];
-    return this.db[grade].sort();
+    return JSON.parse(JSON.stringify(this.db[grade].sort()));
   }
 }
