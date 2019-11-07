@@ -15,5 +15,3 @@ export const convert = (num) => {
   }
   return output.length < 1 ? num.toString() : output;
 };
-
-console.log(convert(30));
