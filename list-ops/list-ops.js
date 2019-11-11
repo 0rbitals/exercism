@@ -1,37 +1,62 @@
 export class List {
   constructor(array) {
-    this.array = array;
+    this.values = array;
   }
 
   append(toAppend) {
-    if (!toAppend && !this.array) {
-      return [];
-    } else if (!toAppend) {
-      return this.array;
+    if (!toAppend.values || !this.values) {
+      return this;
     } else {
       let len = this.length();
       for (let i = 0; i < toAppend.length(); i++) {
-        this.array[len + i] = toAppend.array[i];
+        this.values[len + i] = toAppend.values[i];
       }
     }
-    return this.array;
+    return this;
   }
 
-  concat() {
-    throw new Error("Remove this statement and implement this function");
+  concat(toConcat) {
+    let newArr = [];
+    if (!toConcat.values || !this.values) {
+      return new List([]);
+    } else {
+
+      // Goes through each array
+      for (let i = 0; i < toConcat.length(); ++i) {
+        
+        //console.log(toConcat.values[i].values);
+        //console.log(this.length(toConcat.values[i].values))
+
+        // For each array look up the values inside that array and add them to newArr
+        for (let j = 0; j < this.length(toConcat.values[i].values); ++j) {
+          //console.log(toConcat.values[i].values[j]);
+          newArr.push(toConcat.values[i].values[j]);
+        }
+      }
+    }
+    //console.log(newArr);
+    return this.append(new List(newArr));
   }
 
   filter() {
     throw new Error("Remove this statement and implement this function");
   }
 
-  map() {
-    throw new Error("Remove this statement and implement this function");
+  map(func) {
+    let newArr = [];
+    for (let i = 0; i < this.length(); ++i) {
+      newArr.push(func(this.values[i]));
+    }
+    this.values = newArr;
+    return this;
   }
 
-  length(array=this.array) {
+  length(array=this.values) {
     let done = false;
     let count = 0;
+    if(!array) {
+      return 0;
+    }
     while(!done) {
       if (!array[count]) {
         done = true;
@@ -55,6 +80,18 @@ export class List {
   }
 }
 
-const list1 = new List();
-const list2 = new List();
-console.log(list1.append(list2));
+//const list1 = new List([1,2,3]);
+//const list2 = new List([[1,2,3], [3,5,6], [5,8,8,3]]);
+//console.log(list1.append(list2).values);
+//console.log(list1.concat(list2).values);
+
+//const list1 = new List([1, 2]);
+//const list2 = new List([3]);
+//const list3 = new List([]);
+//const list4 = new List([4, 5, 6]);
+//const listOfLists = new List([list2, list4]);
+//console.log(list1.concat(listOfLists));
+
+const list1 = new List([1,2,3]);
+console.log(list1.map(el => ++el));
+console.log(list1);
