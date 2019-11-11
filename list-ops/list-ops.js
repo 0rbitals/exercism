@@ -38,8 +38,14 @@ export class List {
     return this.append(new List(newArr));
   }
 
-  filter() {
-    throw new Error("Remove this statement and implement this function");
+  filter(func) {
+    let newArr = [];
+    for (let i = 0; i < this.length(); ++i) {
+      if(this.map(func).values[i]) {
+        newArr.push(this.values[i]);
+      }
+    }
+    return {values: newArr};
   }
 
   map(func) {
@@ -47,8 +53,7 @@ export class List {
     for (let i = 0; i < this.length(); ++i) {
       newArr.push(func(this.values[i]));
     }
-    this.values = newArr;
-    return this;
+    return {values: newArr};
   }
 
   length(array=this.values) {
@@ -92,6 +97,9 @@ export class List {
 //const listOfLists = new List([list2, list4]);
 //console.log(list1.concat(listOfLists));
 
-const list1 = new List([1,2,3]);
-console.log(list1.map(el => ++el));
-console.log(list1);
+//const list1 = new List([1,2,3]);
+//console.log(list1.map(el => ++el));
+//console.log(list1);
+
+//const list1 = new List([1, 2, 3, 5]);
+//console.log(list1.filter(el => el % 2 === 1));
