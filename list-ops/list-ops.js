@@ -72,12 +72,28 @@ export class List {
     }
   }
 
-  foldl() {
-    throw new Error("Remove this statement and implement this function");
+  foldl(func, acc=this.values[0]) {
+    let result;
+    if(!this.values) {
+      return acc;
+    }
+    for (let i = 0; i < this.length(); ++i) {
+      result = (func(acc, this.values[i]));
+      acc = this.values[i] / acc;
+    }
+    return result;
   }
 
   foldr() {
-    throw new Error("Remove this statement and implement this function");
+    let result;
+    if(!this.values) {
+      return acc;
+    }
+    for (let i = 0; i < this.length(); ++i) {
+      result = (func(acc, this.values[i]));
+      acc = this.values[i] / acc;
+    }
+    return result;
   }
 
   reverse() {
@@ -101,5 +117,12 @@ export class List {
 //console.log(list1.map(el => ++el));
 //console.log(list1);
 
-//const list1 = new List([1, 2, 3, 5]);
+const list1 = new List([1, 2, 3, 4]);
 //console.log(list1.filter(el => el % 2 === 1));
+console.log(list1.foldlr((acc, el) => el / acc, 24));
+
+console.log([1,2,3,4].reduce((acc, el) => {
+  console.log(el);
+  console.log(acc);
+  return el / acc;
+}));
