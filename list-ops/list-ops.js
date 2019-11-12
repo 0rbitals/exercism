@@ -84,12 +84,12 @@ export class List {
     return result;
   }
 
-  foldr() {
+  foldr(func, acc=this.values[0]) {
     let result;
     if(!this.values) {
       return acc;
     }
-    for (let i = 0; i < this.length(); ++i) {
+    for (let i = this.length()-1; i >= 0; --i) {
       result = (func(acc, this.values[i]));
       acc = this.values[i] / acc;
     }
@@ -97,7 +97,11 @@ export class List {
   }
 
   reverse() {
-    throw new Error("Remove this statement and implement this function");
+    let reversedArr = [];
+    for (let i = this.length()-1; i >= 0; --i) {
+      reversedArr.push(this.values[i]);
+    }
+    return {values: reversedArr};
   }
 }
 
@@ -117,12 +121,12 @@ export class List {
 //console.log(list1.map(el => ++el));
 //console.log(list1);
 
-const list1 = new List([1, 2, 3, 4]);
+//const list1 = new List([1, 2, 3, 4]);
 //console.log(list1.filter(el => el % 2 === 1));
-console.log(list1.foldlr((acc, el) => el / acc, 24));
-
+//console.log(list1.foldr((acc, el) => el / acc, 24));
+/*
 console.log([1,2,3,4].reduce((acc, el) => {
   console.log(el);
   console.log(acc);
   return el / acc;
-}));
+}));*/
