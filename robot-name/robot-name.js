@@ -5,14 +5,23 @@ function randomFromRange(start, stop) {
 }
 
 export class Robot {
+
   constructor() {
-    this.name = this.GenerateName().join('');
+    this.currentName = this.GenerateName();
+    this.constructSet();
+    this.AddToSet(this.currentName);
+  }
+
+  get name() {
+    return this.currentName;
+  }
+
+  constructSet() {
+    this.set = new Set();
   }
 
   AddToSet(name) {
-    let set = new Set();
-    set.add(name.join(''));
-    this.set = set;
+    this.set.add(name);
   }
 
   GenerateName() {
@@ -25,23 +34,20 @@ export class Robot {
         name.push(Math.floor(Math.random() * 10));
       }
     }
-    this.AddToSet(name);
+    name = name.join('');
     return name;
   }
 
   reset() {
-    let newName = this.GenerateName().join('');
+    let newName = this.GenerateName();
     if (this.set.has(newName)) {
-      newName = this.GenerateName().join('');
+      this.reset();
+    } else {
+      this.currentName = newName;
+      this.set.add(newName);
     }
-    this.name = this.GenerateName().join('');
-    this.set.add(newName);
   }
 
  }
 
 Robot.releaseNames = () => { };
-const robot = new Robot()
-console.log(robot.name)
-console.log(robot.reset())
-console.log(robot)
