@@ -11,7 +11,8 @@ export class Cipher {
   }
 
   decode() {
-    
+    const decoded = this.key.split('').map(letter => String.fromCharCode(letter.charCodeAt() - this.shift % 26))
+    return decoded.join('');
   }
 
   get key() {
