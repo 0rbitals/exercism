@@ -15,7 +15,7 @@ dependencies:
 
 ## Requirements
 
-Install assignment dependencies:
+Install assignment dependencies: 
 
 ```bash
 $ npm install
