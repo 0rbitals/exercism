@@ -1,10 +1,14 @@
 export const transpose = (arr) => {
   let newArr = [];
-  for (let i = 0; i < arr.length+1; ++i) {
-    if(arr[0][1] && arr[1][i]) {
-      newArr.push(arr[0][i] + arr[1][i])
+  const num = arr.map((el) => el.length).sort((a,b) => a < b)[0];
+  for (let i = 0; i < num; ++i) {
+    for (let j = 0; j < arr.length; ++j) {
+      newArr.push(arr[j][i])
     }
+    newArr.push(';');
   }
+  newArr = newArr.join('').split(';');
+  newArr.pop();
   return newArr;
 };
 
